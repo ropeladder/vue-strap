@@ -214,8 +214,8 @@ export default {
     },
     show (val) {
       if (val) {
-        this.$els.sel.focus()
-        this.$els.search && this.$els.search.focus()
+        this.$refs.sel.focus()
+        this.$refs.search && this.$refs.search.focus()
       }
     },
     url () {
@@ -245,7 +245,7 @@ export default {
     },
     clearSearch () {
       this.searchValue = ''
-      this.$els.search.focus()
+      this.$refs.search.focus()
     },
     checkValue () {
       if (this.multiple && !(this.value instanceof Array)) {
@@ -293,10 +293,10 @@ export default {
     if (this.url) this.update()
   },
   ready () {
-    $(this.$els.select).onBlur((e) => { this.show = false })
+    $(this.$refs.select).onBlur((e) => { this.show = false })
   },
   beforeDestroy () {
-    $(this.$els.select).offBlur()
+    $(this.$refs.select).offBlur()
   }
 }
 </script>
