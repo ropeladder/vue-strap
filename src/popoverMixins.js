@@ -40,9 +40,9 @@ export default {
     }
   },
   ready () {
-    const popover = this.$els.popover
+    const popover = this.$refs.popover
     if (!popover) return console.error('Could not find popover v-el in your component that uses popoverMixin.')
-    const trigger = this.$els.trigger.children[0]
+    const trigger = this.$refs.trigger.children[0]
     switch (this.placement) {
       case 'top' :
         this.position.left = trigger.offsetLeft - popover.offsetWidth / 2 + trigger.offsetWidth / 2
@@ -74,6 +74,6 @@ export default {
     $(trigger).on(events, () => this.toggle())
   },
   beforeDestroy () {
-    $(this.$els.trigger.children[0]).off()
+    $(this.$refs.trigger.children[0]).off()
   }
 }

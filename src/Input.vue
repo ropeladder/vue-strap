@@ -196,7 +196,7 @@ export default {
   },
   methods: {
     focus () {
-      this.$els.input.focus()
+      this.$refs.input.focus()
     },
     eval () {
       let value = this.value || ''
@@ -213,12 +213,12 @@ export default {
       }
     },
     submit () {
-      if (this.$els.input.form) {
-        const invalids = $('.form-group.validate:not(.has-success)',this.$els.input.form)
+      if (this.$refs.input.form) {
+        const invalids = $('.form-group.validate:not(.has-success)',this.$refs.input.form)
         if (invalids.length) {
           invalids.find('input,textarea,select')[0].focus()
         } else {
-          this.$els.input.form.submit()
+          this.$refs.input.form.submit()
         }
       }
     },
@@ -228,7 +228,7 @@ export default {
       if (this.match!==null && this.match !== value) { return false }
       if (value.length < this.minlength) { return false }
       let valid = true
-      if (this.$els.input.checkValidity && !this.$els.input.checkValidity()){ return false }
+      if (this.$refs.input.checkValidity && !this.$refs.input.checkValidity()){ return false }
       if (this.pattern instanceof Function) valid = this.pattern(this.value)
       if (typeof this.pattern === 'string') {
         let regex = new RegExp(this.pattern)
@@ -238,14 +238,14 @@ export default {
     }
   },
   ready () {
-    $(this.$els.input).on('change keypress keydown keyup', () => this.eval()).on('blur', () => {
+    $(this.$refs.input).on('change keypress keydown keyup', () => this.eval()).on('blur', () => {
       if (!this.noValidate) { this.valid = this.validate() }
     }).on('focus', (e) => {
       if (this.onfocus instanceof Function) this.onfocus.call(this, e)
     })
   },
   beforeDestroy () {
-    $(this.$els.input).off()
+    $(this.$refs.input).off()
   }
 }
 </script>
