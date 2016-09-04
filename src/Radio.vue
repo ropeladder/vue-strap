@@ -94,7 +94,7 @@ export default {
   },
   methods: {
     focus () {
-      this.$refs.input.focus()
+      this.$els.input.focus()
     },
     toggle () {
       if (this.disabled) { return }

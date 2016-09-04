@@ -79,7 +79,7 @@ export default {
     }
   },
   ready () {
-    const $el = $(this.$refs.dropdown)
+    const $el = $(this.$els.dropdown)
     $el.onBlur((e) => { this.show = false })
     $el.findChildren('a,button').on('click', (e) => {
       e.preventDefault()
@@ -90,7 +90,7 @@ export default {
     $el.findChildren('ul').on('click', 'li>a', (e) => { this.show = false })
   },
   beforeDestroy () {
-    const $el = $(this.$refs.dropdown)
+    const $el = $(this.$els.dropdown)
     $el.offBlur()
     $el.findChildren('a,button').off()
     $el.findChildren('ul').off()
