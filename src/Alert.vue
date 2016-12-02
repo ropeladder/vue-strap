@@ -1,7 +1,7 @@
 <template>
   <transition name="fade">
     <div v-show="val" :class="['alert', 'alert-'+type, placement]" :style="{width:width}" role="alert">
-      <button v-show="dismissable" type="button" class="close" @click="val = false">
+      <button v-show="dismissable" type="button" class="close" @click="dismiss">
         <span>&times;</span>
       </button>
       <slot></slot>
@@ -39,6 +39,12 @@ export default {
       if (this.val !== val) {
         this.val = val
       }
+    }
+  },
+  methods: {
+    dismiss () {
+      this.val = false
+      this.value = false
     }
   },
   created () {
